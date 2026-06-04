@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beauty Balance | Ewelina Ślużyńska | Medycyna Estetyczna Suwałki</title>
+<meta name="description" content="Medycyna estetyczna i zabiegi anti-aging. Ewelina Ślużyńska, licencjonowana pielęgniarka. Suwałki i Gdańsk. 54 opinie 5/5 w Google.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalBusiness",
+  "name": "Beauty Balance Ewelina Ślużyńska",
+  "description": "Medycyna estetyczna, zabiegi anti-aging i szkolenia.",
+  "telephone": "+48508089379",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ul. Noniewicza 89a lok. 313",
+    "addressLocality": "Suwałki",
+    "postalCode": "16-400",
+    "addressCountry": "PL"
+  },
+  "sameAs": [
+    "https://www.facebook.com/people/Beauty-Balance-Ewelina-%C5%9Alu%C5%BCy%C5%84ska/100063593898764/",
+    "https://www.instagram.com/beautybalance.ewelinasluzynska/"
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Raleway:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --dark:   #0a0a0a;
+  --grey:   #5a5a5a;
+  --light:  #f5f3f0;
+  --border: #e0ddd8;
+  --white:  #ffffff;
+  --rose:   #b89090;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  background: var(--white);
+  color: var(--dark);
+  overflow-x: hidden;
+}
+
+/* NAV */
+#bb-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  padding: 0 48px; height: 68px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.bb-logo img { height: 36px; width: auto; }
+.bb-nav-links { display: flex; gap: 36px; list-style: none; }
+.bb-nav-links a {
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--grey); text-decoration: none; transition: color 0.25s;
+}
+.bb-nav-links a:hover { color: var(--dark); }
+.bb-nav-cta {
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--white); background: var(--dark);
+  padding: 10px 22px; text-decoration: none;
+  transition: opacity 0.25s;
+}
+.bb-nav-cta:hover { opacity: 0.75; }
+
+/* BURGER */
+.bb-burger {
+  display: none; flex-direction: column; gap: 6px;
+  cursor: pointer; background: transparent; border: none; padding: 6px; outline: none;
+}
+.bb-burger span { display: block; width: 22px; height: 1px; background: var(--dark); transition: all 0.3s; }
+.bb-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.bb-burger.open span:nth-child(2) { opacity: 0; }
+.bb-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.bb-mmenu {
+  display: none; position: fixed; inset: 0;
+  background: var(--white); z-index: 490;
+  flex-direction: column; align-items: center; justify-content: center; gap: 40px;
+}
+.bb-mmenu.open { display: flex; }
+.bb-mmenu a {
+  font-family: 'Cormorant Garamond', serif; font-size: 38px; font-weight: 300;
+  letter-spacing: 2px; color: var(--dark); text-decoration: none; transition: opacity 0.2s;
+}
+.bb-mmenu a:hover { opacity: 0.5; }
+
+/* HERO */
+#bb-hero {
+  min-height: 100vh;
+  display: grid; grid-template-columns: 1fr 1fr;
+  padding-top: 68px;
+}
+.bb-hero-left {
+  display: flex; align-items: center; justify-content: center;
+  padding: 32px 56px; background: var(--white);
+}
+.bb-hero-inner { max-width: 480px; }
+.bb-eyebrow {
+  font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
+  color: var(--grey); margin-bottom: 32px; display: block;
+  opacity: 0; animation: bbUp 0.8s ease 0.2s both;
+}
+.bb-hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(52px, 6vw, 88px); font-weight: 300;
+  line-height: 0.95; letter-spacing: 1px; color: var(--dark);
+  margin-bottom: 24px; opacity: 0; animation: bbUp 0.8s ease 0.35s both;
+}
+.bb-hero-title span { display: block; font-style: italic; color: var(--rose); }
+.bb-hero-role {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(14px, 1.4vw, 17px); font-style: italic; font-weight: 300;
+  color: var(--grey); letter-spacing: 0.5px; margin-bottom: 4px;
+  opacity: 0; animation: bbUp 0.8s ease 0.45s both;
+}
+.bb-hero-loc {
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: #aaa; margin-bottom: 40px;
+  opacity: 0; animation: bbUp 0.8s ease 0.55s both;
+}
+.bb-divider {
+  width: 40px; height: 1px; background: var(--dark); opacity: 0.2;
+  margin-bottom: 40px; opacity: 0; animation: bbFade 0.8s ease 0.6s both;
+}
+.bb-hero-btns {
+  display: flex; gap: 12px; flex-wrap: wrap;
+  opacity: 0; animation: bbUp 0.8s ease 0.7s both;
+}
+.bb-hero-stats {
+  display: flex; gap: 36px; margin-top: 56px;
+  opacity: 0; animation: bbFade 0.8s ease 0.9s both;
+  padding-top: 32px; border-top: 1px solid var(--border);
+}
+.bb-stat-n {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px; font-weight: 300; color: var(--dark);
+  display: block; line-height: 1; margin-bottom: 5px;
+}
+.bb-stat-l { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--grey); }
+
+.bb-hero-right {
+  position: relative; overflow: hidden;
+}
+.bb-hero-right img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center top;
+  display: block;
+}
+
+@keyframes bbUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+@keyframes bbFade { from { opacity:0; } to { opacity:1; } }
+
+/* BUTTONS */
+.bb-btn {
+  display: inline-block; padding: 14px 40px;
+  font-size: 11px; font-weight: 400; letter-spacing: 3px;
+  text-transform: uppercase; text-decoration: none;
+  transition: all 0.25s; cursor: pointer; border: none;
+  white-space: nowrap;
+}
+.bb-btn-dark { background: var(--dark); color: var(--white); }
+.bb-btn-dark:hover { opacity: 0.8; }
+.bb-btn-outline { background: transparent; color: var(--dark); border: 1px solid rgba(10,10,10,0.35); }
+.bb-btn-outline:hover { border-color: var(--dark); }
+
+/* REVEAL */
+.bb-r { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease-out, transform 0.5s ease-out; }
+.bb-r.on { opacity: 1; transform: translateY(0); }
+
+/* SECTIONS */
+.bb-s  { padding: 96px 48px; background: var(--white); }
+.bb-sf { padding: 96px 0; background: var(--light); }
+.bb-sd { padding: 96px 0; background: var(--dark); color: var(--white); }
+.bb-si { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+.bb-lbl {
+  font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
+  color: var(--grey); margin-bottom: 14px; display: block;
+}
+.bb-sd .bb-lbl { color: rgba(255,255,255,0.45); }
+.bb-ttl {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4.5vw, 56px); font-weight: 300;
+  line-height: 1.05; color: var(--dark); margin-bottom: 14px;
+}
+.bb-sd .bb-ttl { color: var(--white); }
+.bb-ttl em { font-style: italic; color: var(--rose); }
+.bb-ln { width: 32px; height: 1px; background: var(--dark); opacity: 0.2; margin-bottom: 48px; }
+.bb-sd .bb-ln { background: var(--white); opacity: 0.2; }
+.bb-body { font-size: 15px; font-weight: 300; color: var(--grey); line-height: 1.9; }
+
+/* ABOUT */
+#bb-about { background: var(--light); padding: 96px 48px; }
+.bb-about-in {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+}
+.bb-creds { margin-top: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.bb-cred {
+  background: var(--white); padding: 16px 18px;
+  border-left: 2px solid var(--dark);
+  transition: box-shadow 0.3s;
+}
+.bb-cred:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+.bb-cred-t { font-size: 12px; font-weight: 500; color: var(--dark); margin-bottom: 3px; }
+.bb-cred-s { font-size: 11px; color: var(--grey); }
+.bb-about-right {
+  border-left: 1px solid var(--border); padding-left: 60px;
+  text-align: center; display: flex; flex-direction: column; align-items: center;
+}
+.bb-quote {
+  font-family: 'Cormorant Garamond', serif; font-size: 20px;
+  font-weight: 300; font-style: italic; color: var(--dark);
+  line-height: 1.8; margin-bottom: 28px;
+  padding: 0 0 20px; border-bottom: 1px solid var(--border);
+}
+.bb-about-nums {
+  display: flex; gap: 36px; margin-top: 32px;
+  padding-top: 24px; border-top: 1px solid var(--border);
+  justify-content: center; width: 100%;
+}
+.bb-num-n {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 40px; font-weight: 300; color: var(--dark);
+  display: block; line-height: 1; margin-bottom: 5px;
+}
+.bb-num-l { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--grey); }
+
+/* SERVICES */
+.bb-svcs {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.bb-svc {
+  background: var(--white); padding: 0;
+  position: relative; overflow: hidden;
+  transition: background 0.3s;
+  display: flex; flex-direction: column;
+}
+.bb-svc:hover { background: var(--light); }
+.bb-svc::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: var(--dark);
+  transform: scaleX(0); transition: transform 0.35s;
+}
+.bb-svc:hover::after { transform: scaleX(1); }
+.bb-svc-photo { width: 100%; aspect-ratio: 1/1; overflow: hidden; }
+.bb-svc-photo img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: grayscale(20%);
+  transition: transform 0.5s ease, filter 0.4s;
+}
+.bb-svc:hover .bb-svc-photo img { transform: scale(1.04); filter: grayscale(0%); }
+.bb-svc-body { padding: 28px 24px 36px; flex: 1; display: flex; flex-direction: column; }
+.bb-svc-num {
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--grey); margin-bottom: 16px; display: block;
+}
+.bb-svc-name {
+  font-family: 'Cormorant Garamond', serif; font-size: 22px;
+  font-weight: 400; color: var(--dark); margin-bottom: 10px; line-height: 1.2;
+}
+.bb-svc-desc { font-size: 13px; color: var(--grey); line-height: 1.9; flex: 1; }
+.bb-svc-tag {
+  margin-top: 16px; font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--rose);
+}
+
+/* FOR WHOM */
+.bb-whom { display: grid; grid-template-columns: 1fr 1fr; }
+.bb-whom-panel {
+  padding: 72px 56px; position: relative;
+}
+.bb-whom-panel:first-child { background: var(--dark); color: var(--white); }
+.bb-whom-panel:last-child { background: var(--light); border-left: 1px solid var(--border); }
+.bb-whom-panel:first-child .bb-lbl { color: rgba(255,255,255,0.4); }
+.bb-whom-panel:first-child .bb-whom-h { color: var(--white); }
+.bb-whom-panel:first-child .bb-whom-sub { color: rgba(255,255,255,0.6); }
+.bb-whom-panel:first-child .bb-whom-item { color: rgba(255,255,255,0.9); border-color: rgba(255,255,255,0.1); }
+.bb-whom-bg {
+  font-family: 'Cormorant Garamond', serif; font-size: 120px; font-weight: 300;
+  color: rgba(255,255,255,0.04); line-height: 1;
+  position: absolute; bottom: 16px; right: 24px;
+}
+.bb-whom-panel:last-child .bb-whom-bg { color: rgba(0,0,0,0.04); }
+.bb-whom-h {
+  font-family: 'Cormorant Garamond', serif; font-size: 28px;
+  font-weight: 300; color: var(--dark); margin-bottom: 10px; margin-top: 12px;
+}
+.bb-whom-sub { font-size: 13px; color: var(--grey); line-height: 1.8; margin-bottom: 24px; }
+.bb-whom-list { list-style: none; margin-top: 24px; }
+.bb-whom-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 9px 0; border-bottom: 1px solid var(--border);
+  font-size: 14px; font-weight: 400; color: var(--grey); line-height: 1.6;
+}
+.bb-whom-item:last-child { border-bottom: none; }
+.bb-whom-dot {
+  width: 4px; height: 4px; background: var(--dark);
+  border-radius: 50%; margin-top: 8px; flex-shrink: 0;
+}
+.bb-whom-panel:first-child .bb-whom-dot { background: rgba(255,255,255,0.5); }
+.bb-whom-panel:last-child .bb-whom-dot { background: var(--rose); }
+.bb-whom-cta { margin-top: 32px; }
+
+/* TRAINING */
+.bb-training {
+  border: 1px solid var(--border); background: var(--white);
+  padding: 56px; display: flex; align-items: center;
+  justify-content: space-between; gap: 48px;
+}
+.bb-training-tag {
+  font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--grey); margin-bottom: 14px; display: block;
+}
+.bb-training-h {
+  font-family: 'Cormorant Garamond', serif; font-size: 32px;
+  font-weight: 300; color: var(--dark); line-height: 1.2; margin-bottom: 14px;
+}
+.bb-training-desc { font-size: 14px; color: var(--grey); line-height: 1.9; }
+.bb-training-cta { flex-shrink: 0; text-align: center; }
+.bb-training-phone {
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--grey); margin-top: 16px; display: block;
+}
+
+/* REVIEWS */
+.bb-revs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.bb-rev {
+  border: 1px solid var(--border); padding: 36px 28px;
+  background: var(--white); position: relative;
+  transition: box-shadow 0.3s;
+}
+.bb-rev:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.06); }
+.bb-rev::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(to right, var(--dark), transparent);
+}
+.bb-rev-q {
+  position: absolute; top: 12px; right: 18px;
+  font-family: 'Cormorant Garamond', serif; font-size: 64px;
+  font-weight: 300; color: rgba(0,0,0,0.05); line-height: 1;
+}
+.bb-rev-stars { font-size: 12px; letter-spacing: 3px; margin-bottom: 16px; display: block; }
+.bb-rev-text {
+  font-family: 'Cormorant Garamond', serif; font-size: 18px;
+  font-weight: 300; font-style: italic; color: var(--dark);
+  line-height: 1.75; margin-bottom: 18px;
+}
+.bb-rev-auth { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--grey); }
+.bb-rev-src { color: var(--rose); }
+.bb-google-badge {
+  display: inline-flex; align-items: center; gap: 20px;
+  border: 1px solid var(--border); padding: 20px 32px; margin-top: 40px;
+}
+.bb-g-score {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px; font-weight: 300; color: var(--dark);
+}
+.bb-g-label {
+  font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--grey);
+}
+
+/* CONTACT */
+#bb-contact { background: var(--dark); padding: 96px 0; color: var(--white); }
+.bb-cont-in {
+  max-width: 1200px; margin: 0 auto; padding: 0 48px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start;
+}
+.bb-cont-item { margin-bottom: 28px; }
+.bb-cont-lbl {
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: rgba(255,255,255,0.4); margin-bottom: 6px; display: block;
+}
+.bb-cont-val {
+  font-family: 'Cormorant Garamond', serif; font-size: 21px; font-weight: 300;
+  color: var(--white); text-decoration: none; display: block;
+  border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 4px;
+  transition: color 0.2s;
+}
+.bb-cont-val:hover { color: rgba(255,255,255,0.6); }
+.bb-social { display: flex; gap: 10px; margin-top: 28px; flex-wrap: wrap; }
+.bb-soc-a {
+  font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  border: 1px solid rgba(255,255,255,0.18); padding: 9px 18px;
+  text-decoration: none; transition: all 0.25s;
+}
+.bb-soc-a:hover { color: var(--white); border-color: rgba(255,255,255,0.5); }
+.bb-cont-cta {
+  border: 1px solid rgba(255,255,255,0.15); padding: 52px 44px;
+  text-align: center; position: relative;
+}
+.bb-cont-cta::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+}
+.bb-cont-cta-t {
+  font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300;
+  color: var(--white); margin-bottom: 8px; line-height: 1.2;
+}
+.bb-cont-cta-s {
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: rgba(255,255,255,0.35); margin-bottom: 32px; display: block;
+}
+.bb-cont-cta .bb-btn-dark { background: var(--white); color: var(--dark); }
+.bb-cont-cta .bb-btn-dark:hover { opacity: 0.85; }
+.bb-cont-phone {
+  font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 300;
+  color: rgba(255,255,255,0.5); display: block; margin-top: 18px;
+  text-decoration: none; transition: color 0.2s;
+}
+.bb-cont-phone:hover { color: var(--white); }
+
+/* FOOTER */
+#bb-footer {
+  background: var(--dark); padding: 36px 48px; text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.bb-foot-logo {
+  font-family: 'Cormorant Garamond', serif; font-size: 13px; letter-spacing: 6px;
+  text-transform: uppercase; color: rgba(255,255,255,0.75); display: block; margin-bottom: 8px;
+}
+.bb-foot-sub {
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+}
+
+/* LOGO */
+.bb-logo img { display: none; }
+.bb-logo-text {
+  display: block;
+  font-family: 'Raleway', sans-serif;
+  font-size: 12px; font-weight: 500; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--dark); text-decoration: none;
+}
+
+/* DESKTOP SERVICE CARDS */
+@media (min-width: 901px) {
+  .bb-svcs {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, auto);
+  }
+  .bb-svc:nth-child(1) {
+    grid-row: 1 / 4;
+  }
+  .bb-svc:nth-child(2),
+  .bb-svc:nth-child(3),
+  .bb-svc:nth-child(4) {
+    grid-column: 2;
+  }
+  .bb-svc:nth-child(2) .bb-svc-body,
+  .bb-svc:nth-child(3) .bb-svc-body,
+  .bb-svc:nth-child(4) .bb-svc-body {
+    padding: 28px 36px;
+    justify-content: center;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  #bb-nav { padding: 0 20px; }
+  .bb-nav-links, .bb-nav-cta { display: none; }
+  .bb-burger { display: flex; }
+  .bb-logo img { display: none; }
+  .bb-logo-text {
+    display: block;
+    font-family: 'Raleway', sans-serif;
+    font-size: 12px; font-weight: 500; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--dark); text-decoration: none;
+  }
+
+  #bb-hero {
+    grid-template-columns: 1fr;
+    min-height: 100svh;
+    padding-top: 0;
+    position: relative;
+    background:
+      linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.1) 100%),
+      url('images/twarzusta.jpg') center 20%/cover no-repeat;
+  }
+  .bb-hero-right { display: none; }
+  .bb-hero-left {
+    padding: 0 24px 52px;
+    min-height: 100svh;
+    align-items: flex-end;
+    justify-content: flex-end;
+    background: transparent;
+  }
+  .bb-hero-inner { max-width: 100%; }
+  .bb-eyebrow { font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 10px; }
+  .bb-hero-title { font-size: clamp(68px, 17vw, 104px); color: var(--white); margin-bottom: 10px; }
+  .bb-hero-title span { color: rgba(255,255,255,0.7); }
+  .bb-hero-role { font-size: 18px; color: rgba(255,255,255,0.65); margin-bottom: 3px; }
+  .bb-hero-loc { font-size: 13px; color: rgba(255,255,255,0.45); margin-bottom: 16px; }
+  .bb-divider { background: var(--white); opacity: 0.3; margin-bottom: 16px; }
+  .bb-hero-btns { gap: 10px; }
+  .bb-btn { font-size: 14px; padding: 18px 40px; }
+  #bb-hero .bb-btn-dark { background: var(--white); color: var(--dark); }
+  #bb-hero .bb-btn-outline { color: var(--white); border-color: rgba(255,255,255,0.5); }
+  .bb-training .bb-btn-dark { border: 1px solid var(--dark); }
+  .bb-training-tag { font-size: 13px; }
+
+  .bb-s  { padding: 60px 20px; }
+  .bb-sf { padding: 40px 0; }
+  .bb-sd { padding: 60px 0; }
+  .bb-si { padding: 0 20px; }
+  #bb-about { padding: 60px 20px; }
+  #bb-contact { padding: 60px 0; }
+  #bb-footer { padding: 32px 20px; }
+
+  .bb-about-in { grid-template-columns: 1fr; gap: 40px; }
+  .bb-about-right { border-left: none; padding-left: 0; border-top: 1px solid var(--border); padding-top: 36px; }
+  .bb-creds { grid-template-columns: 1fr; }
+  .bb-cred { padding: 20px 20px; }
+  .bb-cred-t { font-size: 16px; }
+  .bb-cred-s { font-size: 14px; }
+  .bb-svcs { grid-template-columns: 1fr; }
+  .bb-svc-name { font-size: 32px; }
+  .bb-svc-desc { font-size: 16px; }
+  .bb-svc-num { font-size: 13px; }
+  .bb-whom { grid-template-columns: 1fr; }
+  .bb-whom-panel { padding: 48px 20px; }
+  .bb-whom-bg { display: none; }
+  .bb-whom-panel:last-child .bb-btn-outline { color: var(--dark); border-color: rgba(10,10,10,0.4); }
+  .bb-revs { grid-template-columns: 1fr; gap: 12px; }
+  .bb-cont-in { grid-template-columns: 1fr; gap: 40px; padding: 0 20px; }
+  .bb-training { flex-direction: column; padding: 36px 20px; }
+  .bb-ttl { font-size: clamp(30px, 8vw, 44px); }
+  .bb-ln { margin-bottom: 20px; }
+}
+</style>
+</head>
+<body>
+
+<nav id="bb-nav">
+  <a href="#" class="bb-logo">
+    <img src="images/ala logo.webp" alt="Beauty Balance Ewelina Ślużyńska">
+    <span class="bb-logo-text">Beauty Balance</span>
+  </a>
+  <ul class="bb-nav-links">
+    <li><a href="#bb-about">O mnie</a></li>
+    <li><a href="#bb-uslugi">Zabiegi</a></li>
+    <li><a href="#bb-szkolenia">Szkolenia</a></li>
+    <li><a href="#bb-opinie">Opinie</a></li>
+    <li><a href="#bb-contact">Kontakt</a></li>
+  </ul>
+  <a href="tel:+48508089379" class="bb-nav-cta">508 089 379</a>
+  <button class="bb-burger" id="bbBurger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="bb-mmenu" id="bbMMenu">
+  <a href="#bb-about" onclick="bbClose()">O mnie</a>
+  <a href="#bb-uslugi" onclick="bbClose()">Zabiegi</a>
+  <a href="#bb-szkolenia" onclick="bbClose()">Szkolenia</a>
+  <a href="#bb-opinie" onclick="bbClose()">Opinie</a>
+  <a href="#bb-contact" onclick="bbClose()">Kontakt</a>
+</div>
+
+<!-- HERO -->
+<div id="bb-hero">
+  <div class="bb-hero-left">
+    <div class="bb-hero-inner">
+      <span class="bb-eyebrow">Beauty Balance</span>
+      <h1 class="bb-hero-title">Ewelina<br><span>Ślużyńska</span></h1>
+      <p class="bb-hero-role">Licencjonowana pielęgniarka · Szkoleniowiec</p>
+      <p class="bb-hero-loc">Suwałki &nbsp;/&nbsp; Gdańsk</p>
+      <div class="bb-divider"></div>
+      <div class="bb-hero-btns">
+        <a href="tel:+48508089379" class="bb-btn bb-btn-dark">Umów konsultację</a>
+        <a href="#bb-szkolenia" class="bb-btn bb-btn-outline">Szkolenia</a>
+      </div>
+    </div>
+  </div>
+  <div class="bb-hero-right">
+    <img src="images/twarzusta.jpg" alt="Ewelina Ślużyńska Beauty Balance">
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div id="bb-about">
+  <div class="bb-about-in">
+    <div>
+      <span class="bb-lbl bb-r">Kim jestem</span>
+      <h2 class="bb-ttl bb-r">Ekspert.<br><em>Nie kosmetyczka.</em></h2>
+      <div class="bb-ln bb-r"></div>
+      <p class="bb-body bb-r">Jestem licencjonowaną pielęgniarką specjalizującą się w medycynie estetycznej i terapii anti-aging. Łączę precyzję medyczną z głęboką wiedzą o skórze, by osiągać rezultaty które mówią same za siebie.</p>
+      <p class="bb-body bb-r" style="margin-top:16px;">Działam w Suwałkach i Gdańsku. Szkolę specjalistów z własnych, autorskich technik. Jestem prelegentem w Akademii Fałowska Clinic.</p>
+      <div class="bb-creds bb-r">
+        <div class="bb-cred"><div class="bb-cred-t">Licencjonowana pielęgniarka</div><div class="bb-cred-s">Wykształcenie medyczne</div></div>
+        <div class="bb-cred"><div class="bb-cred-t">Ekspert anti-aging</div><div class="bb-cred-s">Zabiegi odmładzające</div></div>
+        <div class="bb-cred"><div class="bb-cred-t">Prelegent Akademii JF</div><div class="bb-cred-s">Fałowska Clinic</div></div>
+        <div class="bb-cred"><div class="bb-cred-t">Szkoleniowiec</div><div class="bb-cred-s">Autorskie techniki</div></div>
+      </div>
+    </div>
+    <div class="bb-about-right bb-r">
+      <blockquote class="bb-quote">"Zadbam o Twoją skórę i zrobię naturalne usta. Szkolę z autorskich technik zabiegowych."</blockquote>
+      <p class="bb-body">Moim celem jest efekt który wygląda naturalnie — tak, żeby nikt nie wiedział że byłaś na zabiegu, tylko że wyglądasz świetnie.</p>
+      <div class="bb-about-nums">
+        <div><span class="bb-num-n">54</span><span class="bb-num-l">Opinie 5/5</span></div>
+        <div><span class="bb-num-n">2×</span><span class="bb-num-l">Lokalizacje</span></div>
+        <div><span class="bb-num-n">8k+</span><span class="bb-num-l">Społeczność IG</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<div id="bb-uslugi" class="bb-s" style="padding-left:0; padding-right:0; max-width:none;">
+  <div class="bb-si" style="margin-bottom:40px;">
+    <span class="bb-lbl bb-r">Zabiegi</span>
+    <h2 class="bb-ttl bb-r">Precyzja<br><em>w każdym detalu</em></h2>
+    <div class="bb-ln bb-r"></div>
+  </div>
+  <div class="bb-svcs">
+    <div class="bb-svc bb-r">
+      <div class="bb-svc-photo"><img src="images/usta.webp" alt="Modelowanie ust Beauty Balance"></div>
+      <div class="bb-svc-body">
+        <span class="bb-svc-num">01 · Usta</span>
+        <h3 class="bb-svc-name">Modelowanie ust</h3>
+        <p class="bb-svc-desc">Naturalne powiększenie i modelowanie konturu. Techniki autorskie — efekt bez "kaczki".</p>
+        <span class="bb-svc-tag">Flagowa usługa</span>
+      </div>
+    </div>
+    <div class="bb-svc bb-r">
+      <div class="bb-svc-body" style="padding-top:44px;">
+        <span class="bb-svc-num">02 · Anti-Aging</span>
+        <h3 class="bb-svc-name">Zabiegi anti-aging</h3>
+        <p class="bb-svc-desc">Kompleksowe odmłodzenie twarzy — wypełnianie zmarszczek, lifting, rewitalizacja głęboka.</p>
+        <span class="bb-svc-tag">Specjalizacja</span>
+      </div>
+    </div>
+    <div class="bb-svc bb-r">
+      <div class="bb-svc-body" style="padding-top:44px;">
+        <span class="bb-svc-num">03 · Blizny</span>
+        <h3 class="bb-svc-name">Terapia blizn</h3>
+        <p class="bb-svc-desc">Zaawansowane leczenie blizn potrądzikowych, pourazowych i pooperacyjnych.</p>
+        <span class="bb-svc-tag">Specjalizacja</span>
+      </div>
+    </div>
+    <div class="bb-svc bb-r">
+      <div class="bb-svc-body" style="padding-top:44px;">
+        <span class="bb-svc-num">04 · Skóra</span>
+        <h3 class="bb-svc-name">Pielęgnacja skóry</h3>
+        <p class="bb-svc-desc">Indywidualnie dobrane protokoły pielęgnacyjne. Zdrowa skóra jako fundament zabiegu.</p>
+        <span class="bb-svc-tag">Indywidualne</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOR WHOM -->
+<div id="bb-komu">
+  <div class="bb-si" style="padding-bottom:20px; padding-top:20px; background:var(--white);">
+    <span class="bb-lbl bb-r">Dla kogo</span>
+    <h2 class="bb-ttl bb-r">Dwie drogi<br><em>do Eweliny</em></h2>
+    <div class="bb-ln bb-r"></div>
+  </div>
+  <div class="bb-whom">
+    <div class="bb-whom-panel bb-r">
+      <span class="bb-whom-bg">01</span>
+      <span class="bb-lbl">Klientki zabiegowe</span>
+      <h3 class="bb-whom-h">Chcę zabiegu</h3>
+      <p class="bb-whom-sub">Suwałki i Gdańsk. Konsultacja, indywidualny plan, naturalny efekt.</p>
+      <ul class="bb-whom-list">
+        <li class="bb-whom-item"><span class="bb-whom-dot"></span>Modelowanie i powiększanie ust</li>
+        <li class="bb-whom-item"><span class="bb-whom-dot"></span>Zabiegi anti-aging twarzy</li>
+        <li class="bb-whom-item"><span class="bb-whom-dot"></span>Terapia blizn i regeneracja</li>
+        <li class="bb-whom-item"><span class="bb-whom-dot"></span>Indywidualny protokół pielęgnacji</li>
+      </ul>
+      <div class="bb-whom-cta"><a href="tel:+48508089379" class="bb-btn bb-btn-dark" style="background:var(--white);color:var(--dark);">Zadzwoń: 508 089 379</a></div>
+    </div>
+    <div class="bb-whom-panel bb-r">
+      <span class="bb-whom-bg">02</span>
+      <span class="bb-lbl" style="color:var(--rose);">Uczestniczki szkoleń</span>
+      <h3 class="bb-whom-h">Chcę się uczyć</h3>
+      <p class="bb-whom-sub">Dla pielęgniarek i lekarzy z całej Polski. Autorskie techniki Eweliny.</p>
+      <ul class="bb-whom-list">
+        <li class="bb-whom-item"><span class="bb-whom-dot"></span>Techniki modelowania ust</li>
+        <li class="bb-whom-item"><span class="bb-whom-dot"></span>Zaawansowane metody anti-aging</li>
+        <li class="bb-whom-item"><span class="bb-whom-dot"></span>Terapia blizn, protokoły autorskie</li>
+        <li class="bb-whom-item"><span class="bb-whom-dot"></span>Certyfikat ukończenia szkolenia</li>
+      </ul>
+      <div class="bb-whom-cta"><a href="#bb-szkolenia" class="bb-btn bb-btn-outline">Dowiedz się więcej</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- TRAINING -->
+<div id="bb-szkolenia" class="bb-sf">
+  <div class="bb-si">
+    <span class="bb-lbl bb-r">Szkolenia</span>
+    <h2 class="bb-ttl bb-r">Ucz się od<br><em>najlepszych</em></h2>
+    <div class="bb-ln bb-r"></div>
+    <div class="bb-training bb-r">
+      <div>
+        <span class="bb-training-tag">Autorskie techniki · Cała Polska</span>
+        <h3 class="bb-training-h">Szkolenia z medycyny estetycznej</h3>
+        <p class="bb-training-desc">Ewelina szkoli pielęgniarki i lekarzy z własnych technik. Jako prelegent Akademii Fałowska Clinic jej wiedza jest potwierdzona na najwyższym poziomie. Małe grupy, intensywna praktyka, certyfikat.</p>
+      </div>
+      <div class="bb-training-cta">
+        <a href="tel:+48508089379" class="bb-btn bb-btn-dark">Zapytaj o termin</a>
+        <span class="bb-training-phone">508 089 379</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- REVIEWS -->
+<div id="bb-opinie" class="bb-s" style="max-width:1200px; margin:0 auto;">
+  <span class="bb-lbl bb-r">Opinie</span>
+  <h2 class="bb-ttl bb-r">54 opinie.<br><em>Każda 5/5.</em></h2>
+  <div class="bb-ln bb-r"></div>
+  <div class="bb-revs">
+    <div class="bb-rev bb-r">
+      <span class="bb-rev-q">"</span>
+      <span class="bb-rev-stars">★ ★ ★ ★ ★</span>
+      <p class="bb-rev-text">Ewelina to prawdziwy profesjonalista. Usta wyglądają naturalnie — dokładnie to czego szukałam.</p>
+      <span class="bb-rev-auth">Klientka zabiegowa <span class="bb-rev-src">· Google</span></span>
+    </div>
+    <div class="bb-rev bb-r">
+      <span class="bb-rev-q">"</span>
+      <span class="bb-rev-stars">★ ★ ★ ★ ★</span>
+      <p class="bb-rev-text">Szkolenie na najwyższym poziomie. Techniki które natychmiast wdrożyłam w swojej praktyce.</p>
+      <span class="bb-rev-auth">Uczestniczka szkolenia <span class="bb-rev-src">· Google</span></span>
+    </div>
+    <div class="bb-rev bb-r">
+      <span class="bb-rev-q">"</span>
+      <span class="bb-rev-stars">★ ★ ★ ★ ★</span>
+      <p class="bb-rev-text">Terapia blizn zmieniła moje życie. Ewelina rozumie pacjenta jak nikt inny.</p>
+      <span class="bb-rev-auth">Klientka zabiegowa <span class="bb-rev-src">· Google</span></span>
+    </div>
+  </div>
+  <div style="display:flex; justify-content:center;">
+    <div class="bb-google-badge bb-r">
+      <div><span class="bb-g-score">5.0</span><div style="font-size:13px; color:#aaa;">★★★★★</div></div>
+      <div><div class="bb-g-label">54 opinie</div><div class="bb-g-label">Google Maps</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div id="bb-contact">
+  <div class="bb-cont-in">
+    <div>
+      <span class="bb-lbl bb-r">Kontakt</span>
+      <h2 class="bb-ttl bb-r" style="color:var(--white);"><em>Umów</em><br>konsultację</h2>
+      <div class="bb-ln bb-r"></div>
+      <div class="bb-cont-item bb-r"><span class="bb-cont-lbl">Telefon</span><a href="tel:+48508089379" class="bb-cont-val">508 089 379</a></div>
+      <div class="bb-cont-item bb-r"><span class="bb-cont-lbl">Adres · Suwałki</span><a href="https://maps.google.com/?q=Noniewicza+89a+Suwalki" target="_blank" class="bb-cont-val">Noniewicza 89a lok. 313, Suwałki</a></div>
+      <div class="bb-cont-item bb-r"><span class="bb-cont-lbl">Lokalizacje</span><span class="bb-cont-val" style="cursor:default; border-bottom-color:transparent;">Suwałki / Gdańsk</span></div>
+      <div class="bb-social bb-r">
+        <a href="https://www.facebook.com/people/Beauty-Balance-Ewelina-%C5%9Alu%C5%BCy%C5%84ska/100063593898764/" target="_blank" class="bb-soc-a">Facebook</a>
+        <a href="https://www.instagram.com/beautybalance.ewelinasluzynska/" target="_blank" class="bb-soc-a">Instagram</a>
+      </div>
+    </div>
+    <div class="bb-cont-cta bb-r">
+      <h3 class="bb-cont-cta-t">Gotowa na zmianę?</h3>
+      <span class="bb-cont-cta-s">Konsultacja · Suwałki / Gdańsk</span>
+      <a href="tel:+48508089379" class="bb-btn bb-btn-dark">Zadzwoń teraz</a>
+      <a href="tel:+48508089379" class="bb-cont-phone">508 089 379</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div id="bb-footer">
+  <span class="bb-foot-logo">Beauty Balance · Ewelina Ślużyńska</span>
+  <span class="bb-foot-sub">Medycyna Estetyczna · Suwałki / Gdańsk</span>
+</div>
+
+<script>
+function bbMenu() {
+  document.getElementById('bbBurger').classList.toggle('open');
+  document.getElementById('bbMMenu').classList.toggle('open');
+}
+function bbClose() {
+  document.getElementById('bbBurger').classList.remove('open');
+  document.getElementById('bbMMenu').classList.remove('open');
+}
+document.getElementById('bbBurger').addEventListener('click', bbMenu);
+
+// Stagger
+document.querySelectorAll('.bb-svcs .bb-svc').forEach(function(el, i) {
+  el.style.transitionDelay = (i * 0.1) + 's';
+});
+document.querySelectorAll('.bb-revs .bb-rev').forEach(function(el, i) {
+  el.style.transitionDelay = (i * 0.1) + 's';
+});
+document.querySelectorAll('.bb-whom .bb-whom-panel').forEach(function(el, i) {
+  el.style.transitionDelay = (i * 0.15) + 's';
+});
+
+// IntersectionObserver
+var obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+document.querySelectorAll('.bb-r').forEach(function(el) { obs.observe(el); });
+</script>
+</body>
+</html>
