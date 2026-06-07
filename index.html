@@ -475,12 +475,18 @@ body {
 }
 
 /* LOGO */
+.bb-logo { display: flex; flex-direction: column; justify-content: center; gap: 3px; text-decoration: none; }
 .bb-logo img { display: none; }
 .bb-logo-text {
   display: block;
   font-family: 'Raleway', sans-serif;
   font-size: 12px; font-weight: 500; letter-spacing: 4px; text-transform: uppercase;
-  color: var(--dark); text-decoration: none;
+  color: var(--dark);
+}
+.bb-logo-loc {
+  font-family: 'Raleway', sans-serif;
+  font-size: 11px; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--grey); opacity: 0.7;
 }
 
 /* SCROLL MARGIN */
@@ -529,7 +535,7 @@ body {
     margin-top: 0;
     height: 100svh;
     background:
-      linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.62) 52%, rgba(0,0,0,0.12) 100%),
+      linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.88) 28%, rgba(0,0,0,0.38) 46%, rgba(0,0,0,0.08) 100%),
       url('images/twarzusta.jpg') center 20%/cover no-repeat;
   }
   .bb-hero-right { display: none; }
@@ -549,11 +555,10 @@ body {
   }
   .bb-hero-title span { color: rgba(255,255,255,0.78); }
   .bb-hero-role {
-    font-size: 17px; color: rgba(255,255,255,0.72); margin-bottom: 3px;
+    font-size: 17px; color: rgba(255,255,255,0.72); margin-bottom: 22px;
     text-shadow: 0 1px 10px rgba(0,0,0,0.7);
   }
-  .bb-hero-loc { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 16px; }
-  .bb-divider { background: var(--white); opacity: 0.3; margin-bottom: 16px; }
+  .bb-divider { display: none; }
   .bb-hero-btns { gap: 10px; flex-direction: column; align-items: stretch; }
   .bb-btn { font-size: 14px; padding: 18px 40px; text-align: center; }
   #bb-hero .bb-btn-dark { background: var(--white); color: var(--dark); }
@@ -599,6 +604,7 @@ body {
   <a href="#" class="bb-logo">
     <img src="images/ala logo.webp" alt="Beauty Balance Ewelina Ślużyńska">
     <span class="bb-logo-text">Beauty Balance</span>
+    <span class="bb-logo-loc">Suwałki&nbsp;/&nbsp;Gdańsk</span>
   </a>
   <ul class="bb-nav-links">
     <li><a href="#bb-about">O mnie</a></li>
@@ -628,7 +634,6 @@ body {
       <span class="bb-eyebrow">Beauty Balance</span>
       <h1 class="bb-hero-title">Ewelina<span>Ślużyńska</span></h1>
       <p class="bb-hero-role">Licencjonowana pielęgniarka · Szkoleniowiec</p>
-      <p class="bb-hero-loc">Suwałki &nbsp;/&nbsp; Gdańsk</p>
       <div class="bb-divider"></div>
       <div class="bb-hero-btns">
         <a href="tel:+48508089379" class="bb-btn bb-btn-dark">Umów konsultację</a>
@@ -661,9 +666,7 @@ body {
       <blockquote class="bb-quote">"Zadbam o Twoją skórę i zrobię naturalne usta. Szkolę z autorskich technik zabiegowych."</blockquote>
       <p class="bb-body">Moim celem jest efekt który wygląda naturalnie. Tak, żeby nikt nie wiedział że byłaś na zabiegu, tylko że wyglądasz świetnie.</p>
       <div class="bb-about-nums">
-        <div><span class="bb-num-n">54</span><span class="bb-num-l">Opinie 5/5 Google</span></div>
-        <div><span class="bb-num-n">8k+</span><span class="bb-num-l">Obserwujących IG</span></div>
-        <div><span class="bb-num-n">Jedyna</span><span class="bb-num-l">z tym profilem w okolicy</span></div>
+        <div><span class="bb-num-n">5.0</span><span class="bb-num-l">Średnia ocena Google<br>na podstawie 54 opinii</span></div>
       </div>
     </div>
   </div>
@@ -842,12 +845,6 @@ body {
       <span class="bb-rev-stars">★ ★ ★ ★ ★</span>
       <p class="bb-rev-text">Terapia blizn zmieniła moje życie. Ewelina rozumie pacjenta jak nikt inny.</p>
       <span class="bb-rev-auth">Klientka zabiegowa <span class="bb-rev-src">· Google</span></span>
-    </div>
-  </div>
-  <div style="display:flex; justify-content:center;">
-    <div class="bb-google-badge bb-r">
-      <div><span class="bb-g-score">5.0</span><div style="font-size:13px; color:#aaa;">★★★★★</div></div>
-      <div><div class="bb-g-label">54 opinie</div><div class="bb-g-label">Google Maps</div></div>
     </div>
   </div>
 </div>
